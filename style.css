@@ -360,3 +360,10 @@ a:hover {
 .project-link:hover {
   text-decoration: underline;
 }
+
+.tags {
+  color: #8ef0cf;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0.25rem 0 1rem;
+}
