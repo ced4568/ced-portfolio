@@ -478,3 +478,73 @@ a:hover {
     gap: 0.5rem;
   }
 }
+
+.noc-dashboard {
+  background:
+    radial-gradient(circle at top left, rgba(142, 240, 207, 0.08), transparent 30%),
+    linear-gradient(180deg, #070b12 0%, #0d1422 100%);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.noc-status-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.noc-status-card {
+  position: relative;
+  padding: 1.35rem;
+  border-radius: var(--radius);
+  background: rgba(17, 28, 46, 0.92);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.noc-status-card h3 {
+  margin-top: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.noc-status-card p {
+  color: var(--muted);
+}
+
+.noc-status-card small {
+  display: inline-block;
+  margin-top: 0.8rem;
+  color: var(--accent-2);
+  font-weight: 700;
+}
+
+.status-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+  background: var(--accent-2);
+  box-shadow: 0 0 16px rgba(142, 240, 207, 0.9);
+}
+
+.noc-status-card.warning .status-dot {
+  background: var(--warning);
+  box-shadow: 0 0 16px rgba(242, 204, 96, 0.9);
+}
+
+.noc-status-card.planned .status-dot {
+  background: var(--accent);
+  box-shadow: 0 0 16px rgba(88, 166, 255, 0.9);
+}
+
+@media (max-width: 1050px) {
+  .noc-status-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .noc-status-grid {
+    grid-template-columns: 1fr;
+  }
+}
