@@ -62,6 +62,15 @@ SYSTEMS = [
         "label": "Cluster"
     },
     {
+        "name": "APRS Home iGate",
+        "type": "RF Edge Gateway",
+        "host": "10.10.30.129",
+        "port": 8001,
+        "address": "KJ5JCO-10 / Direwolf KISS 8001",
+        "layer": "Edge / RF",
+        "label": "iGate"
+    },
+    {
         "name": "APRS-IS",
         "type": "APRS Internet Service",
         "host": "noam.aprs2.net",
