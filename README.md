@@ -22,7 +22,7 @@ From dashboards and full-stack apps to homelab environments, everything I create
 
 # 🧠 Ced’s Portfolio System
 
-👉 **Live Site:** https://ced4568.github.io/ced-portfolio
+👉 **Live Site:** https://chasedumphord.com
 
 This repository represents a **live system portfolio**, not just static projects.
 
@@ -38,6 +38,8 @@ It showcases:
 # 📊 Ced’s NOC Dashboard
 
 A central visibility layer for all systems.
+
+<b>Live:</b> <a href="https://noc.chasedumphord.com">noc.chasedumphord.com</a>
 
 ### 🔍 What it shows:
 
@@ -70,12 +72,15 @@ This demonstrates:
 
 ## 🔴 Live System Status
 
+🔴 **Live NOC Dashboard:** [noc.chasedumphord.com](https://noc.chasedumphord.com)
+
 ![Ced's NOC](https://img.shields.io/endpoint?url=https://ced4568.github.io/ced-portfolio/data/noc-badge.json&style=for-the-badge)
 
 ![Edge](https://img.shields.io/badge/Edge-RF%20Active-orange?style=for-the-badge)
 ![Portfolio](https://img.shields.io/badge/Portfolio-Live-blue?style=for-the-badge)
 
 ---
+
 # 🧠 Featured System — Ced’s NOC (Network Operations Center)
 
 A real-time monitoring and observability platform built on top of my homelab infrastructure.
@@ -158,6 +163,7 @@ This was tuned using:
   <b>🧠 Ced’s NOC Dashboard</b><br/>
   Real-time monitoring system providing visibility into infrastructure, services, and edge systems.<br/>
   <b>Highlights:</b> Live status tracking, latency monitoring, alert panel, dynamic UI updates.<br/>
+  <b>Live:</b> <a href="https://noc.chasedumphord.com">noc.chasedumphord.com</a><br/>
   <b>Source:</b> <a href="https://github.com/ced4568/ceds-homelab">ceds-homelab</a>
  </li>
 
