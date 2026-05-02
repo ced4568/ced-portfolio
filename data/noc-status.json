@@ -1,103 +1,101 @@
 {
   "nocName": "Ced's NOC",
-  "status": "All Systems Online",
-  "lastUpdated": "2026-04-26 21:13:17",
+  "status": "Operational",
+  "lastUpdated": "2025-05-01T00:00:00Z",
   "summary": {
-    "nodes": "12+",
-    "services": "8/8",
-    "online": "8",
-    "offline": "0",
-    "vlans": "4",
-    "edgeSystems": "2"
+    "nodes": 12,
+    "services": 10,
+    "vlans": 4,
+    "edgeSystems": 2
   },
   "systems": [
     {
-      "name": "Proxmox VE",
-      "type": "Virtualization Platform",
-      "address": "10.10.30.250:8006",
+      "name": "Proxmox Primary",
+      "type": "Virtualization Host",
+      "layer": "Infrastructure",
+      "label": "Compute",
+      "address": "proxmox.local",
       "status": "Online",
       "severity": "Healthy",
-      "layer": "Core Infrastructure",
-      "label": "Hypervisor",
-      "latency": "17 ms",
-      "lastCheck": "2026-04-26 21:13:17"
+      "latency": "2ms",
+      "lastCheck": "Manual"
     },
     {
       "name": "TrueNAS",
-      "type": "Storage Platform",
-      "address": "10.10.30.143",
+      "type": "Network Storage",
+      "layer": "Infrastructure",
+      "label": "Storage",
+      "address": "truenas.local",
       "status": "Online",
       "severity": "Healthy",
-      "layer": "Storage",
-      "label": "NAS",
-      "latency": "15 ms",
-      "lastCheck": "2026-04-26 21:13:17"
+      "latency": "3ms",
+      "lastCheck": "Manual"
+    },
+    {
+      "name": "K3s Cluster",
+      "type": "Kubernetes (12-node Pi)",
+      "layer": "Orchestration",
+      "label": "Containers",
+      "address": "k3s.local",
+      "status": "Online",
+      "severity": "Healthy",
+      "latency": "5ms",
+      "lastCheck": "Manual"
     },
     {
       "name": "Nginx Proxy Manager",
       "type": "Reverse Proxy",
-      "address": "10.10.30.210:81",
+      "layer": "Networking",
+      "label": "Access",
+      "address": "npm.local",
       "status": "Online",
       "severity": "Healthy",
-      "layer": "Access Layer",
-      "label": "Proxy",
-      "latency": "0 ms",
-      "lastCheck": "2026-04-26 21:13:17"
+      "latency": "1ms",
+      "lastCheck": "Manual"
     },
     {
-      "name": "Dashy",
-      "type": "Service Dashboard",
-      "address": "10.10.30.61:4000",
+      "name": "Uptime Kuma",
+      "type": "Service Monitor",
+      "layer": "Monitoring",
+      "label": "Observability",
+      "address": "uptime.local",
       "status": "Online",
       "severity": "Healthy",
-      "layer": "Dashboard",
-      "label": "Portal",
-      "latency": "0 ms",
-      "lastCheck": "2026-04-26 21:13:17"
+      "latency": "2ms",
+      "lastCheck": "Manual"
     },
     {
-      "name": "Jellyfin",
-      "type": "Media Service",
-      "address": "10.10.30.143:30013",
-      "status": "Online",
+      "name": "APRS iGate — Home",
+      "type": "RF Edge / APRS-IS Gateway",
+      "layer": "Edge",
+      "label": "RF",
+      "address": "aprs-home.local",
+      "status": "Active",
       "severity": "Healthy",
-      "layer": "Application Service",
-      "label": "App",
-      "latency": "0 ms",
-      "lastCheck": "2026-04-26 21:13:17"
+      "latency": "N/A",
+      "lastCheck": "Manual"
     },
     {
-      "name": "K3s API",
-      "type": "Kubernetes API",
-      "address": "10.10.30.72:6443",
-      "status": "Online",
-      "severity": "Healthy",
-      "layer": "Compute Cluster",
-      "label": "Cluster",
-      "latency": "0 ms",
-      "lastCheck": "2026-04-26 21:13:17"
-    },
-    {
-      "name": "APRS Home iGate",
-      "type": "RF Edge Gateway",
-      "address": "KJ5JCO-10 / Direwolf KISS 8001",
-      "status": "Online",
+      "name": "APRS iGate — Mobile",
+      "type": "RF Edge / Mobile Node",
+      "layer": "Edge",
+      "label": "RF",
+      "address": "aprs-mobile.local",
+      "status": "Building",
       "severity": "Degraded",
-      "layer": "Edge / RF",
-      "label": "iGate",
-      "latency": "59 ms",
-      "lastCheck": "2026-04-26 21:13:17"
+      "latency": "N/A",
+      "lastCheck": "Manual"
     },
     {
-      "name": "APRS-IS",
-      "type": "APRS Internet Service",
-      "address": "noam.aprs2.net:14580",
+      "name": "Grafana",
+      "type": "Metrics Dashboard",
+      "layer": "Monitoring",
+      "label": "Observability",
+      "address": "grafana.local",
       "status": "Online",
-      "severity": "Degraded",
-      "layer": "Edge / RF",
-      "label": "External",
-      "latency": "61 ms",
-      "lastCheck": "2026-04-26 21:13:17"
+      "severity": "Healthy",
+      "latency": "4ms",
+      "lastCheck": "Manual"
     }
   ]
 }
