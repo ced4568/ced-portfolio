@@ -4,472 +4,442 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Chase Dumphord | Digital Systems & Infrastructure</title>
+  <title>Ced's NOC | Live Systems Dashboard</title>
 
   <meta
     name="description"
-    content="Chase Dumphord portfolio - digital systems, infrastructure, networking, automation, homelab engineering, and real-world technical projects."
+    content="Ced's NOC — live network operations center dashboard showing real-time infrastructure health, service status, and edge system monitoring."
   />
 
-  <link rel="stylesheet" href="style.css" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ced's NOC | Live Systems Dashboard" />
+  <meta property="og:description" content="Live infrastructure visibility — Proxmox, K3s, TrueNAS, APRS edge systems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://noc.chasedumphord.com" />
+
+  <!-- Favicons (path up one level since we're in /noc/) -->
+  <link rel="icon" type="image/png" sizes="32x32"   href="../assets/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16"   href="../assets/favicons/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicons/favicon-192x192.png" />
+  <link rel="apple-touch-icon"      sizes="512x512" href="../assets/favicons/favicon-512x512.png" />
+  <link rel="shortcut icon"                         href="../assets/favicons/favicon.ico" />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Chase Dumphord" />
+
+  <!-- Fonts — same as main site -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Shared stylesheet (up one level) -->
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- NOC-specific styles -->
+  <style>
+    /* ── NOC page overrides & extras ── */
+    .noc-page-hero {
+      padding: 3.5rem 0 2rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .noc-page-hero .eyebrow {
+      margin-bottom: 0.6rem;
+    }
+
+    .noc-page-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      margin: 0 0 0.75rem;
+      line-height: 1.1;
+    }
+
+    .noc-page-title span {
+      color: var(--accent-2);
+    }
+
+    .noc-page-lead {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 60ch;
+      margin: 0 0 1.5rem;
+    }
+
+    .noc-page-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .noc-page-meta a { color: var(--muted); }
+    .noc-page-meta a:hover { color: var(--accent-2); }
+
+    /* Full-width NOC content area */
+    .noc-full {
+      padding: 2.5rem 0 4rem;
+    }
+
+    /* Uptime summary bar */
+    .uptime-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .uptime-pill {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .uptime-pill.online {
+      color: var(--accent-2);
+      border-color: rgba(94, 250, 204, 0.3);
+      background: rgba(94, 250, 204, 0.06);
+    }
+
+    .uptime-pill.warning {
+      color: var(--warning);
+      border-color: rgba(242, 204, 96, 0.3);
+      background: rgba(242, 204, 96, 0.06);
+    }
+
+    .uptime-pill.offline {
+      color: var(--danger);
+      border-color: rgba(255, 95, 86, 0.3);
+      background: rgba(255, 95, 86, 0.06);
+    }
+
+    /* Layer filter tabs */
+    .layer-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .layer-tab {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .layer-tab:hover,
+    .layer-tab.active {
+      color: var(--accent-2);
+      border-color: rgba(94, 250, 204, 0.35);
+      background: rgba(94, 250, 204, 0.07);
+    }
+
+    /* Roadmap section on NOC page */
+    .noc-roadmap {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--line);
+    }
+
+    /* Stack info footer on NOC page */
+    .noc-stack-bar {
+      margin-top: 2.5rem;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      background: rgba(0,0,0,0.2);
+      border: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      align-items: center;
+    }
+
+    .noc-stack-bar strong {
+      color: var(--accent-2);
+    }
+
+    @media (max-width: 620px) {
+      .layer-tabs { gap: 0.4rem; }
+      .layer-tab  { font-size: 0.7rem; padding: 0.3rem 0.65rem; }
+    }
+  </style>
 </head>
 
 <body>
+
+  <!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
   <header class="site-header">
     <div class="container nav">
-      <a href="#top" class="logo">Chase Dumphord</a>
+      <a href="https://chasedumphord.com" class="logo">Ced<span class="logo-cursor">_</span></a>
 
       <nav>
         <ul class="nav-links">
-          <li><a href="#snapshot">Snapshot</a></li>
-          <li><a href="#noc">NOC</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://chasedumphord.com/#snapshot">Snapshot</a></li>
+          <li><a href="https://chasedumphord.com/#about">About</a></li>
+          <li><a href="https://chasedumphord.com/#projects">Projects</a></li>
+          <li><a href="https://chasedumphord.com/#stack">Stack</a></li>
+          <li><a href="https://chasedumphord.com/#contact">Contact</a></li>
+          <li><a href="https://chasedumphord.com/assets/images/ChaseD_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-text">
-          <p class="eyebrow">Digital Systems • Infrastructure • Networking • Automation • Edge Systems</p>
 
-          <h1>I build practical systems that connect hardware, networks, software, and operations.</h1>
-
-          <p class="lead">
-            I’m Chase Dumphord — a hands-on systems builder focused on digital infrastructure,
-            Linux systems, homelab engineering, Raspberry Pi deployments, networking, automation,
-            and real-world technical problem solving.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">View Projects</a>
-            <a class="btn btn-secondary" href="#contact">Contact Me</a>
-          </div>
-
-          <ul class="quick-facts">
-            <li>Oxford, MS</li>
-            <li>
-              GitHub:
-              <a href="https://github.com/ced4568" target="_blank" rel="noopener noreferrer">ced4568</a>
-            </li>
-            <li>
-              Email:
-              <a href="mailto:chasedumphord@gmail.com">chasedumphord@gmail.com</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="hero-panel">
-          <img
-            src="assets/images/ChaseD_headshot.jpg"
-            alt="Headshot of Chase Dumphord"
-            class="hero-image"
-          />
-
-          <div class="terminal-card">
-            <div class="terminal-top">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-            <pre><code>$ whoami
-systems_builder
-
-$ focus
-infrastructure
-networking
-automation
-edge_systems
-
-$ status
-building_real_systems</code></pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="snapshot" class="section section-alt">
+    <!-- ═══════════════════════════════ NOC HERO ═══════════════════════════════ -->
+    <div class="noc-page-hero">
       <div class="container">
-        <div class="section-heading">
-          <p class="section-label">Environment</p>
-          <h2>Systems Snapshot</h2>
-          <p class="section-intro">
-            A quick look at the infrastructure and systems I’m actively building and documenting.
-          </p>
-        </div>
+        <p class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Ced's NOC • Live Infrastructure Dashboard • Auto-refresh: 30s
+        </p>
 
-        <div class="stats-grid">
-          <div class="stat-card">
-            <h3>12+</h3>
-            <p>Nodes</p>
-            <span>K3s cluster environment</span>
-          </div>
+        <h1 class="noc-page-title">
+          Live Systems <span>Dashboard</span>
+        </h1>
 
-          <div class="stat-card">
-            <h3>10+</h3>
-            <p>Services</p>
-            <span>Self-hosted stack</span>
-          </div>
+        <p class="noc-page-lead">
+          Real-time visibility into Ced's HomeLab infrastructure — Proxmox, K3s,
+          TrueNAS, APRS RF edge systems, and self-hosted services.
+          Not simulated. Not a demo. Running hardware.
+        </p>
 
-          <div class="stat-card">
-            <h3>4</h3>
-            <p>VLANs</p>
-            <span>Segmented network design</span>
-          </div>
-
-          <div class="stat-card">
-            <h3>2</h3>
-            <p>iGate Nodes</p>
-            <span>Home + mobile APRS</span>
-          </div>
-        </div>
+        <ul class="noc-page-meta">
+          <li>📍 Oxford, MS</li>
+          <li><a href="https://chasedumphord.com">← Portfolio</a></li>
+          <li><a href="https://github.com/ced4568" target="_blank" rel="noopener noreferrer">github/ced4568</a></li>
+        </ul>
       </div>
-    </section>
+    </div>
 
-    <section id="noc" class="section noc-dashboard">
+    <!-- ═══════════════════════════════ NOC DASHBOARD ═══════════════════════════════ -->
+    <div class="noc-full">
       <div class="container">
-        <div class="section-heading">
-          <p class="section-label">Ced’s NOC</p>
-          <h2>Live Systems Overview</h2>
-          <p class="section-intro">
-            Real infrastructure inventory from Ced’s HomeLab, K3s cluster, and APRS edge systems.
-          </p>
-        </div>
 
+        <!-- Status command bar -->
         <div class="noc-command-bar">
-          <span class="status-dot"></span>
-          <span id="noc-status-text">Loading NOC status...</span>
+          <span class="status-dot" id="noc-dot"></span>
+          <span id="noc-status-text">Connecting to NOC feed...</span>
+          <span class="noc-refresh-badge" id="noc-refresh-badge"></span>
         </div>
 
         <p class="noc-proof">
-          Built using real infrastructure: Proxmox • K3s • TrueNAS • VLAN segmentation • APRS RF Edge Systems
+          Proxmox • K3s • TrueNAS • VLAN Segmentation • APRS RF Edge Systems
         </p>
 
+        <!-- Uptime summary pills (populated by JS) -->
+        <div class="uptime-bar" id="uptime-bar"></div>
+
+        <!-- Metrics -->
         <div class="noc-metrics-grid">
           <div class="noc-metric">
             <h3 id="metric-nodes">--</h3>
             <p>Infrastructure Nodes</p>
           </div>
-
           <div class="noc-metric">
             <h3 id="metric-services">--</h3>
             <p>Services Online</p>
           </div>
-
           <div class="noc-metric">
             <h3 id="metric-vlans">--</h3>
             <p>Network Segments</p>
           </div>
-
           <div class="noc-metric">
             <h3 id="metric-edge">--</h3>
             <p>Edge Systems</p>
           </div>
         </div>
 
+        <!-- Alert panel -->
         <div class="noc-alert-panel">
           <div class="noc-alert-header">
-            <h3>🚨 NOC Alert Panel</h3>
-            <span>Top 3 System Notes</span>
+            <h3>🚨 Alert Panel</h3>
+            <span>Top 3 Priority Systems</span>
           </div>
-
           <div id="noc-alert-list" class="noc-alert-list">
-            <p>Loading alerts...</p>
+            <p class="noc-loading">Awaiting data feed...</p>
           </div>
         </div>
 
+        <!-- Layer filter tabs -->
+        <div class="layer-tabs" id="layer-tabs">
+          <button class="layer-tab active" data-layer="all">All Systems</button>
+        </div>
+
+        <!-- System cards grid -->
         <div id="noc-system-grid" class="noc-system-grid"></div>
-      </div>
-    </section>
 
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-label">About</p>
-          <h2>Hands-on systems builder with a digital infrastructure mindset</h2>
-        </div>
-
-        <div class="content-grid">
-          <div class="card">
-            <p>
-              I’m a technical professional focused on digital systems, infrastructure, networking,
-              automation, and hands-on system integration. I enjoy building systems that are practical,
-              reliable, and well documented — from homelab services and dashboards to Raspberry Pi
-              deployments, APRS iGates, and troubleshooting workflows.
-            </p>
-
-            <p>
-              My background blends field engineering, industrial technology, software-oriented thinking,
-              and infrastructure problem solving. I’m especially interested in projects that connect the
-              physical and digital worlds through monitoring, networking, automation, and resilient design.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Core Focus Areas</h3>
-
-            <ul class="clean-list">
-              <li>Digital systems and infrastructure</li>
-              <li>Linux systems and service management</li>
-              <li>Networking, VLANs, failover, and connectivity troubleshooting</li>
-              <li>Raspberry Pi and edge-device deployments</li>
-              <li>Documentation, process building, and reproducible project design</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="section section-alt">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-label">Projects</p>
-          <h2>🔧 Infrastructure & Systems Projects</h2>
-          <p class="section-intro">
-            These projects are built around real systems, networking, Linux services, edge devices,
-            and practical documentation.
+        <!-- Fallback -->
+        <div id="noc-fallback" class="noc-fallback" style="display:none;">
+          <p class="noc-fallback-msg">
+            📡 NOC feed unavailable from this context — systems run locally.<br/>
+            Data updates when the local pipeline pushes a fresh noc-status.json.
           </p>
         </div>
 
-        <div class="projects-grid">
-          <article class="project-card featured-project">
-            <div class="project-top">
-              <h3>🧠 Ced’s HomeLab Infrastructure</h3>
-              <span class="status-pill">Flagship</span>
-            </div>
-
-            <p class="tags">Infrastructure • Networking • Virtualization • Monitoring • Self-Hosting</p>
-
-            <p class="project-impact">
-              Designed as a practical infrastructure environment for networking, monitoring,
-              service hosting, and documentation.
-            </p>
-
-            <p>
-              Personal infrastructure lab focused on network segmentation, virtualization,
-              self-hosted services, monitoring, and architecture documentation.
-            </p>
-
-            <ul class="clean-list">
-              <li>VLAN segmentation and network design</li>
-              <li>Proxmox virtualization</li>
-              <li>Self-hosted services and monitoring</li>
-              <li>System architecture documentation</li>
-            </ul>
-
-            <a href="https://github.com/ced4568/ceds-homelab" target="_blank" rel="noopener noreferrer" class="project-link">
-              View Project →
+        <!-- Stack info bar -->
+        <div class="noc-stack-bar">
+          <span><strong>Stack:</strong> Python health checks → JSON → JS dashboard</span>
+          <span><strong>Next:</strong> Grafana + Prometheus integration</span>
+          <span><strong>Source:</strong>
+            <a href="https://github.com/ced4568/ceds-homelab" target="_blank" rel="noopener noreferrer">
+              github/ceds-homelab
             </a>
-          </article>
+          </span>
+        </div>
 
-          <article class="project-card">
-            <div class="project-top">
-              <h3>☸️ K3s Kubernetes Cluster</h3>
-              <span class="status-pill">Infrastructure</span>
+        <!-- NOC Roadmap -->
+        <div class="noc-roadmap">
+          <p class="section-label">// noc roadmap</p>
+          <h2 class="section-h2" style="font-family:var(--font-display);font-size:1.6rem;margin:0 0 1.25rem;">Build Stages</h2>
+
+          <div class="noc-grid">
+            <div class="noc-card">
+              <div class="noc-card-badge done">✅ Live</div>
+              <h3>Portfolio NOC</h3>
+              <p>
+                JSON-driven dashboard showing real inventory, online/offline checks,
+                service labels, latency, and last-check timestamps.
+              </p>
             </div>
-
-            <p class="tags">Kubernetes • Containers • Linux • Infrastructure • Automation</p>
-
-            <p class="project-impact">
-              Built to simulate distributed infrastructure, container orchestration, and scalable service deployment.
-            </p>
-
-            <p>
-              Multi-node K3s cluster built for container orchestration, service deployment,
-              and infrastructure experimentation.
-            </p>
-
-            <ul class="clean-list">
-              <li>Multi-node cluster setup</li>
-              <li>Containerized workloads</li>
-              <li>Service deployment</li>
-              <li>Infrastructure automation</li>
-            </ul>
-
-            <a href="https://github.com/ced4568/ced-k3s-homelab" target="_blank" rel="noopener noreferrer" class="project-link">
-              View Project →
-            </a>
-          </article>
-
-          <article class="project-card">
-            <div class="project-top">
-              <h3>📡 APRS iGate System</h3>
-              <span class="status-pill">Edge System</span>
+            <div class="noc-card">
+              <div class="noc-card-badge next">⚙️ Next</div>
+              <h3>Automated Data Updates</h3>
+              <p>
+                Scheduled scripts auto-refresh system status and push dashboard-ready
+                JSON on a cron interval — no manual updates.
+              </p>
             </div>
-
-            <p class="tags">RF • Linux • Raspberry Pi • Networking • APRS-IS • Edge Systems</p>
-
-            <p class="project-impact">
-              Bridges RF communication into IP-based infrastructure using Linux, Direwolf, and APRS-IS.
-            </p>
-
-            <p>
-              Operational dual-node APRS iGate system built with Raspberry Pi, Direwolf, APRS-IS,
-              RF radios, HomeLab network integration, and planned mobile GPS support.
-            </p>
-
-            <ul class="clean-list">
-              <li>RF packet decoding with Direwolf</li>
-              <li>APRS-IS uplink verified on aprs.fi</li>
-              <li>HomeLab WiFi + mobile hotspot failover</li>
-              <li>Mobile build includes ETH-USB-HUB-BOX expansion</li>
-              <li>Documented configs, architecture, and troubleshooting</li>
-            </ul>
-
-            <a href="https://github.com/ced4568/ceds-aprs-igate" target="_blank" rel="noopener noreferrer" class="project-link">
-              View Project →
-            </a>
-          </article>
+            <div class="noc-card">
+              <div class="noc-card-badge future">📈 Future</div>
+              <h3>Grafana + Prometheus</h3>
+              <p>
+                Full observability stack for Proxmox, TrueNAS, K3s, Raspberry Pi,
+                Uptime Kuma, and APRS edge systems with real-time metrics.
+              </p>
+            </div>
+          </div>
         </div>
+
       </div>
-    </section>
+    </div>
 
-    <section class="section noc-section">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-label">NOC Roadmap</p>
-          <h2>📊 Ced’s NOC Vision</h2>
-          <p class="section-intro">
-            Ced’s NOC is being built as a staged monitoring and systems-visibility platform for HomeLab,
-            Kubernetes, edge devices, and future production-style dashboards.
-          </p>
-        </div>
-
-        <div class="noc-grid">
-          <div class="noc-card">
-            <h3>✅ Current: Portfolio NOC</h3>
-            <p>
-              JSON-driven dashboard that displays real inventory, online/offline checks, service labels,
-              latency, and last-check timestamps.
-            </p>
-          </div>
-
-          <div class="noc-card">
-            <h3>⚙️ Next: Automated Data Updates</h3>
-            <p>
-              Scheduled local script updates will refresh system status data automatically and push dashboard-ready
-              JSON into the portfolio.
-            </p>
-          </div>
-
-          <div class="noc-card">
-            <h3>📈 Future: Grafana + Prometheus</h3>
-            <p>
-              Deeper monitoring stack for Proxmox, TrueNAS, K3s, Raspberry Pi nodes, Uptime Kuma,
-              and APRS edge systems.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="resume" class="section">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-label">Resume Snapshot</p>
-          <h2>Technical experience that bridges field work and digital systems</h2>
-        </div>
-
-        <div class="content-grid">
-          <div class="card">
-            <h3>What I Bring</h3>
-
-            <ul class="clean-list">
-              <li>Industrial and field-service technical experience</li>
-              <li>Linux, Raspberry Pi, and systems administration work</li>
-              <li>Networking, connectivity, and troubleshooting depth</li>
-              <li>Documentation, process building, and reproducible project design</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Current Direction</h3>
-
-            <p>
-              I’m positioning myself around digital systems, infrastructure, networking,
-              automation, and technical operations — especially roles where hands-on problem
-              solving and system integration matter.
-            </p>
-
-            <p>
-              More detailed resume content will be added here as the portfolio grows.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt personal-section">
-      <div class="container personal-grid">
-        <div class="personal-image-wrap">
-          <img
-            src="assets/images/lakephotopinkpants.png"
-            alt="Chase Dumphord standing by a fence with a lake view in the background"
-            class="personal-image"
-          />
-        </div>
-
-        <div class="card">
-          <p class="section-label">Personal Note</p>
-          <h2>Technical, curious, and always building</h2>
-
-          <p>
-            Outside of work, I enjoy electronics, self-hosting, coding, drones, radio, and
-            hands-on technical projects that push me to learn something useful. That curiosity
-            carries directly into the way I build and document systems.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-label">Contact</p>
-          <h2>Let’s connect</h2>
-        </div>
-
-        <div class="contact-grid">
-          <div class="card">
-            <h3>Contact Info</h3>
-
-            <p>Email: <a href="mailto:chasedumphord@gmail.com">chasedumphord@gmail.com</a></p>
-            <p>Phone: <a href="tel:+16622142231">662-214-2231</a></p>
-            <p>Location: Oxford, MS</p>
-            <p>
-              GitHub:
-              <a href="https://github.com/ced4568" target="_blank" rel="noopener noreferrer">github.com/ced4568</a>
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>What I’m Open To</h3>
-
-            <ul class="clean-list">
-              <li>Digital systems and infrastructure roles</li>
-              <li>Networking and technical operations work</li>
-              <li>Automation and monitoring projects</li>
-              <li>Projects involving hardware + software integration</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
+  <!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
   <footer class="site-footer">
     <div class="container footer-content">
-      <p>© <span data-year></span> Chase Dumphord</p>
-      <a href="#top" class="back-to-top">Back to top ↑</a>
+      <p>© <span data-year></span> Chase Dumphord — <span class="footer-mono">noc.chasedumphord.com</span></p>
+      <a href="#top" class="back-to-top">↑ back to top</a>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Shared script (up one level) -->
+  <script src="../script.js"></script>
+
+  <!-- NOC page extras — layer filter tabs + uptime pills -->
+  <script>
+    // ── Layer filter tabs ──────────────────────────────────────────
+    // Populated after NOC data loads. Filters the system grid by layer.
+    let allSystems = [];
+
+    const originalLoad = window.loadNocStatus;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Hook into data after the shared script loads it
+      const observer = new MutationObserver(() => {
+        const cards = document.querySelectorAll(".noc-system-card");
+        if (cards.length > 0) {
+          buildLayerTabs();
+          buildUptimePills();
+          observer.disconnect();
+        }
+      });
+
+      const grid = document.getElementById("noc-system-grid");
+      if (grid) observer.observe(grid, { childList: true });
+    });
+
+    function buildLayerTabs() {
+      const cards = document.querySelectorAll(".noc-system-card");
+      const layers = new Set(["all"]);
+
+      cards.forEach(card => {
+        const layerEl = card.querySelector(".noc-system-top span:last-child");
+        if (layerEl) layers.add(layerEl.textContent.trim());
+      });
+
+      const tabContainer = document.getElementById("layer-tabs");
+      tabContainer.innerHTML = "";
+
+      layers.forEach(layer => {
+        const btn = document.createElement("button");
+        btn.className = "layer-tab" + (layer === "all" ? " active" : "");
+        btn.dataset.layer = layer;
+        btn.textContent = layer === "all" ? "All Systems" : layer;
+        btn.addEventListener("click", () => filterByLayer(layer, btn));
+        tabContainer.appendChild(btn);
+      });
+    }
+
+    function filterByLayer(layer, activeBtn) {
+      document.querySelectorAll(".layer-tab").forEach(t => t.classList.remove("active"));
+      activeBtn.classList.add("active");
+
+      document.querySelectorAll(".noc-system-card").forEach(card => {
+        if (layer === "all") {
+          card.style.display = "";
+          return;
+        }
+        const layerEl = card.querySelector(".noc-system-top span:last-child");
+        card.style.display =
+          layerEl && layerEl.textContent.trim() === layer ? "" : "none";
+      });
+    }
+
+    function buildUptimePills() {
+      const bar = document.getElementById("uptime-bar");
+      if (!bar) return;
+
+      const cards = document.querySelectorAll(".noc-system-card");
+      let online = 0, warning = 0, offline = 0;
+
+      cards.forEach(card => {
+        const dot = card.querySelector(".mini-status");
+        if (!dot) return;
+        if (dot.classList.contains("online"))       online++;
+        else if (dot.classList.contains("warning")) warning++;
+        else if (dot.classList.contains("offline")) offline++;
+      });
+
+      bar.innerHTML = `
+        <span class="uptime-pill online">● ${online} Online</span>
+        ${warning > 0 ? `<span class="uptime-pill warning">● ${warning} Degraded</span>` : ""}
+        ${offline > 0 ? `<span class="uptime-pill offline">● ${offline} Offline</span>` : ""}
+        <span class="uptime-pill">${online + warning + offline} Total Systems</span>
+      `;
+    }
+  </script>
+
 </body>
 </html>
