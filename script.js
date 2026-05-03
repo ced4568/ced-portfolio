@@ -234,6 +234,8 @@ async function loadGithubRepos() {
     }
   }
 }
+// Build the alert panel from system data
+function renderAlerts(systems, alertList) {
   const scored = systems
     .map((sys) => {
       const sev    = (sys.severity || "").toLowerCase();
