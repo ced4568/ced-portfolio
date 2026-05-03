@@ -1,7 +1,7 @@
 {
   "nocName": "Ced's NOC",
   "status": "2 System(s) Degraded",
-  "lastUpdated": "2026-05-03T18:55:01Z",
+  "lastUpdated": "2026-05-03T18:55:47Z",
   "summary": {
     "nodes": "12+ Pi",
     "services": "26/28",
@@ -17,7 +17,7 @@
       "address": "10.10.30.250",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
+      "latency": "0.2ms",
       "lastCheck": "2026-05-03 18:55 UTC"
     },
     {
@@ -28,7 +28,7 @@
       "address": "10.10.30.192",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.0ms",
+      "latency": "0.1ms",
       "lastCheck": "2026-05-03 18:55 UTC"
     },
     {
@@ -61,7 +61,7 @@
       "address": "10.10.30.74",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.7ms",
+      "latency": "0.5ms",
       "lastCheck": "2026-05-03 18:55 UTC"
     },
     {
@@ -72,7 +72,7 @@
       "address": "10.10.30.227",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.5ms",
+      "latency": "0.7ms",
       "lastCheck": "2026-05-03 18:55 UTC"
     },
     {
@@ -83,7 +83,7 @@
       "address": "10.10.30.72",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
+      "latency": "0.2ms",
       "lastCheck": "2026-05-03 18:55 UTC"
     },
     {
@@ -94,7 +94,7 @@
       "address": "10.10.30.245",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
+      "latency": "0.2ms",
       "lastCheck": "2026-05-03 18:55 UTC"
     },
     {
@@ -127,7 +127,7 @@
       "address": "10.10.30.134",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
+      "latency": "0.2ms",
       "lastCheck": "2026-05-03 18:55 UTC"
     },
     {
@@ -149,7 +149,7 @@
       "address": "10.10.30.126",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.4ms",
+      "latency": "0.2ms",
       "lastCheck": "2026-05-03 18:55 UTC"
     },
     {
@@ -171,7 +171,7 @@
       "address": "10.10.30.208",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.4ms",
+      "latency": "0.3ms",
       "lastCheck": "2026-05-03 18:55 UTC"
     },
     {
@@ -204,7 +204,7 @@
       "address": "10.10.30.29",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.2ms",
+      "latency": "0.3ms",
       "lastCheck": "2026-05-03 18:55 UTC"
     },
     {
@@ -215,7 +215,7 @@
       "address": "10.10.30.143",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.8ms",
+      "latency": "0.5ms",
       "lastCheck": "2026-05-03 18:55 UTC"
     },
     {
@@ -259,7 +259,7 @@
       "address": "10.10.30.14",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.2ms",
+      "latency": "0.3ms",
       "lastCheck": "2026-05-03 18:55 UTC"
     },
     {
@@ -270,7 +270,7 @@
       "address": "10.10.30.61",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.2ms",
+      "latency": "0.1ms",
       "lastCheck": "2026-05-03 18:55 UTC"
     },
     {
@@ -292,7 +292,7 @@
       "address": "10.10.30.233",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.4ms",
+      "latency": "0.3ms",
       "lastCheck": "2026-05-03 18:55 UTC"
     },
     {
