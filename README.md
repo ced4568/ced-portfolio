@@ -1,269 +1,122 @@
-<h1>Hi, I'm Chase! <br/>
-Digital Systems | Infrastructure | RF Edge Systems
-</h1>
+# Hi, I'm Chase (Ced) Dumphord
+### Digital Systems Engineer | Infrastructure | Automation | RF Edge Systems
 
-<h3>
-I build real-world systems that combine data, automation, and infrastructure. 
-From dashboards and full-stack apps to homelab environments, everything I create is designed to solve practical problems and scale.
-</h3>
-
-<img align="right" alt="Coding Gorilla" width="400px" style="padding-right:10px;" src="https://gifdb.com/images/thumbnail/monkey-laptop-coding-miys12p5izw3s11s.gif" />
-
-<ul>
- <li>🚀 Currently building data dashboards & system monitoring tools</li>
- <li>🖥️ Running a full homelab (Proxmox, Kubernetes, Docker)</li> 
- <li>⚙️ Focused on automation, infrastructure, and real-world systems</li>
- <li>🧠 Ask me about Raspberry Pi clusters, K3s, or system design</li>
- <li>📫 Reach me: Chasedumphord@gmail.com</li>
- <li>⚡ Fun fact: I have ball pythons 🐍 along with dogs</li>
-</ul>
+> **Live Portfolio:** https://chasedumphord.com
+> **Live NOC Dashboard:** https://noc.chasedumphord.com
 
 ---
 
-# 🧠 Ced’s Portfolio System
+## 🧠 About
 
-👉 **Live Site:** https://chasedumphord.com
-
-This repository represents a **live system portfolio**, not just static projects.
-
-It showcases:
-
-* 📊 **Ced’s NOC Dashboard** (live system monitoring)
-* 🧠 **HomeLab Infrastructure** (Proxmox, VLANs, services)
-* ☸️ **K3s Cluster** (distributed compute)
-* 📡 **APRS iGate (RF Edge System)**
+Digital Systems Engineer with 10+ years of experience across industrial automation, manufacturing systems, and data-driven infrastructure. Currently at GE Aerospace Digital Team specializing in machine data integration, dashboard development, and system-level visibility. Hands-on homelab engineer bridging physical equipment with modern digital platforms. Increasingly integrating AI tooling for system documentation, automated diagnostics, and workflow acceleration.
 
 ---
 
-# 📊 Ced’s NOC Dashboard
+## 🌐 Live Sites
 
-A central visibility layer for all systems.
-
-<b>Live:</b> <a href="https://noc.chasedumphord.com">noc.chasedumphord.com</a>
-
-### 🔍 What it shows:
-
-* Infrastructure health
-* Service availability
-* Network segmentation
-* RF edge system status
-
-### 🧠 Why it matters:
-
-This demonstrates:
-
-* System monitoring mindset
-* Operational visibility
-* Real-world infrastructure awareness
+| Site | URL | Description |
+|------|-----|-------------|
+| Portfolio | https://chasedumphord.com | Personal portfolio — projects, stack, resume |
+| NOC Dashboard | https://noc.chasedumphord.com | Live infrastructure visibility — 28 systems |
 
 ---
 
-## 🖼️ Live Dashboard Preview
+## 📊 Ced's NOC — Live Infrastructure Observability
 
-### 📊 Metrics Overview
+Real-time network operations center dashboard monitoring 28 homelab systems across 6 infrastructure layers.
 
-![NOC Metrics](./screenshots/noc-metrics.png)
-
-### 🖥️ Systems Overview
-
-![NOC Systems](./screenshots/noc-systems.png)
-
----
-
-## 🔴 Live System Status
-
-🔴 **Live NOC Dashboard:** [noc.chasedumphord.com](https://noc.chasedumphord.com)
-
-![Ced's NOC](https://img.shields.io/endpoint?url=https://ced4568.github.io/ced-portfolio/data/noc-badge.json&style=for-the-badge)
-
-![Edge](https://img.shields.io/badge/Edge-RF%20Active-orange?style=for-the-badge)
-![Portfolio](https://img.shields.io/badge/Portfolio-Live-blue?style=for-the-badge)
-
----
-
-# 🧠 Featured System — Ced’s NOC (Network Operations Center)
-
-A real-time monitoring and observability platform built on top of my homelab infrastructure.
-
-### 🔍 What it demonstrates:
-
-* Live system monitoring (services, nodes, edge systems)
-* Infrastructure visibility across VLANs and clusters
-* Custom dashboard UI (portfolio + operational view)
-* Service health tracking (latency, uptime, status)
-* Real data ingestion (not simulated)
-
-### ⚙️ Stack:
-
-* Python (health checks / data generation)
-* JSON API (status feed)
-* JavaScript (dynamic UI rendering)
-* Future: Grafana + Prometheus integration
-
-👉 This is the **core system** that ties everything together.
-
----
-
-# 🧱 Foundation — Ced’s Home Lab (Infrastructure + Monitoring)
-
-Real-world environment used to simulate production systems and host services.
-
-* Proxmox virtualization platform
-* K3s Kubernetes cluster (Raspberry Pi)
-* TrueNAS storage system
-* Nginx Proxy Manager (external access layer)
-* VLAN segmentation (Main / IoT / HomeLab / Guest)
-* Monitoring stack (Grafana, Prometheus, Uptime Kuma)
-
-👉 The NOC dashboard is built directly on top of this environment.
-
----
-
-# 📡 Edge System — APRS iGate (RF → Internet Gateway)
-
-A real-world RF system that feeds live data into infrastructure.
-
-* Raspberry Pi + Direwolf APRS TNC
-* Audio chain tuning (critical for decode accuracy)
-* APRS-IS integration
-* Real beacon ingestion from handheld radios
-
-🔗 **Project:**
-https://github.com/ced4568/ceds-aprs-igate
-
----
-
-## 🔥 Key Insight
-
-This system bridges:
+### How It Works
 
 ```
-RF (radio signals) → Digital Infrastructure → Internet (APRS-IS)
+Proxmox Biggie (Cron every 5min)
+  → noc_update.py pings 28 systems
+  → writes data/noc-status.json
+  → git push to ced-portfolio
+  → GitHub Pages deploys (~30s)
+  → Browser fetches every 30s
+  → Live dashboard updates
 ```
 
----
+### Systems Monitored
 
-## 🎯 Key Tuning Insight
+- **6-node Proxmox Cluster** — BigWorld, Biggie, Snoop, TooShort, Tupac, DrDre
+- **12-node K3s Cluster** — 3 control plane (django-1/2/3) + 9 workers (ingress, data, monitoring groups)
+- **TrueNAS** — Network attached storage
+- **Nginx Proxy Manager** — Reverse proxy layer
+- **Prometheus + Grafana + Uptime Kuma** — Full observability stack (Prometheus actively scraping)
+- **Dashy + Home Assistant + PrimeStation** — Services layer
+- **APRS iGate x2** — RF edge systems (home + mobile)
 
-* Target audio level: **~50–60**
-* Too high → clipping / decode failure
-* Too low → missed packets
+### Automation
 
-This was tuned using:
-
-* Direwolf audio level output
-* Real beacon testing from handheld radios
-
----
-
-# 🧠 Featured Projects
-
-<ul>
- <li>
-  <b>🧠 Ced’s NOC Dashboard</b><br/>
-  Real-time monitoring system providing visibility into infrastructure, services, and edge systems.<br/>
-  <b>Highlights:</b> Live status tracking, latency monitoring, alert panel, dynamic UI updates.<br/>
-  <b>Live:</b> <a href="https://noc.chasedumphord.com">noc.chasedumphord.com</a><br/>
-  <b>Source:</b> <a href="https://github.com/ced4568/ceds-homelab">ceds-homelab</a>
- </li>
-
- <br/>
-
- <li>
-  <b>🧱 Ced’s Home Lab</b><br/>
-  Full infrastructure environment simulating production systems using virtualization and Kubernetes.<br/>
-  <b>Highlights:</b> Proxmox VE, K3s cluster (12-node Pi cluster), VLAN segmentation, reverse proxy, monitoring stack.<br/>
-  <b>Source:</b> <a href="https://github.com/ced4568/ceds-homelab">ceds-homelab</a>
- </li>
-
- <br/>
-
- <li>
-  <b>📡 APRS iGate (RF Edge System)</b><br/>
-  RF-to-internet gateway ingesting real-world radio data into digital systems.<br/>
-  <b>Highlights:</b> Audio tuning, Direwolf APRS TNC, APRS-IS integration, live beacon ingestion.<br/>
-  <b>Source:</b> <a href="https://github.com/ced4568/ceds-aprs-igate">ceds-aprs-igate</a>
- </li>
-</ul>
+- Script: `~/scripts/noc_update.py` running on Biggie (`10.10.30.192`)
+- Cron: `*/5 * * * *` — every 5 minutes
+- Log: `/var/log/noc_update.log`
+- Auth: GitHub Personal Access Token via baked remote URL
 
 ---
 
-# 🧰 Tech Stack
+## 🏗️ Infrastructure Overview
 
-### ⚡ Core Technologies
-
-<img align="left" alt="TypeScript" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg" />
-<img align="left" alt="Git" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
-<img align="left" alt="Linux" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" />
-<img align="left" alt="HTML" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" />
-<img align="left" alt="JavaScript" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" />
-<img align="left" alt="React" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
-<img align="left" alt="NodeJS" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" />
-<img align="left" alt="Python" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-plain.svg" />
-<img align="left" alt="Docker" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" />
-<img align="left" alt="Kubernetes" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" />
-<img align="left" alt="Grafana" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" />
-<img align="left" alt="Prometheus" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" />
-<img align="left" alt="Bash" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" />
-
-<br /><br />
+| Layer | Systems | Count |
+|-------|---------|-------|
+| Compute | Proxmox VE cluster | 6 nodes |
+| Orchestration | K3s Kubernetes | 12 nodes |
+| Storage | TrueNAS | 1 |
+| Networking | Nginx Proxy Manager, Cloudflare Tunnels, UniFi VLANs | 4 VLANs |
+| Monitoring | Prometheus, Grafana, Uptime Kuma, Custom NOC | 4 services |
+| Edge | APRS iGate (home + mobile), Direwolf TNC | 2 nodes |
 
 ---
 
-### 🖥️ Infrastructure & Systems
+## 🔥 Featured Projects
 
-* Proxmox VE (Virtualization)
-* K3s Kubernetes (Raspberry Pi Cluster)
-* Docker / Containerized Services
-* TrueNAS (Storage)
+### 📊 Ced's NOC Dashboard
 
-### 📊 Monitoring & Observability
+Real-time monitoring system with live system health, latency tracking, severity-based alerts, and layer filtering.
 
-* Grafana (Dashboards)
-* Prometheus (Metrics - in progress)
-* Uptime Kuma (Service Monitoring)
-* Custom NOC Dashboard (Python + JSON + JS)
+- **Live:** https://noc.chasedumphord.com
+- **Source:** https://github.com/ced4568/ceds-noc
 
-### 🌐 Networking & Access
+### 🧱 Ced's HomeLab
 
-* Nginx Proxy Manager (Reverse Proxy)
-* Cloudflare Tunnels (Secure External Access)
-* VLAN Segmentation (UniFi Network)
+Full enterprise-style homelab with Proxmox clustering, K3s orchestration, VLAN segmentation, and full observability stack including Prometheus scraping.
 
-### 📡 Edge & RF Systems
+- **Source:** https://github.com/ced4568/ceds-homelab
 
-* Direwolf (APRS TNC)
-* APRS-IS Integration
-* Raspberry Pi iGate Systems
-* Audio Signal Processing / Tuning
+### 📡 APRS iGate (RF Edge System)
 
-### 💻 Development
+Dual-node RF-to-internet gateway. Raspberry Pi + Direwolf TNC. Live on aprs.fi.
 
-* Python (Automation / Data Collection)
-* JavaScript (Frontend Dashboard UI)
-* HTML / CSS (UI Design)
-* Bash (System Automation)
-* Git / GitHub (Version Control)
+- **Source:** https://github.com/ced4568/ceds-aprs-igate
 
 ---
 
-# 📈 Roadmap
+## 🧰 Tech Stack
 
-* [ ] Grafana + Prometheus integration
-* [ ] Real-time metrics ingestion
-* [ ] NOC alerting system
-* [ ] Mobile APRS iGate deployment
-* [ ] Advanced system dashboards
+**Infrastructure:** Proxmox VE • K3s • Docker • TrueNAS • Nginx Proxy Manager • Cloudflare Tunnels
+
+**Monitoring:** Prometheus • Grafana • Uptime Kuma • Custom NOC Dashboard
+
+**Networking:** UniFi • VLAN Segmentation • Cloudflare DNS
+
+**Edge / RF:** Direwolf • APRS-IS • Raspberry Pi • RTL-SDR
+
+**Development:** Python • Bash • JavaScript • HTML/CSS • Git
+
+**AI & Automation:** Claude (Anthropic) • LLM-assisted Documentation • Prompt Engineering
 
 ---
 
-# 👤 Connect With Me
+## 👤 Connect
 
-[LinkedIn](https://www.linkedin.com/in/toochase-dumphord/)
-[GitHub](https://github.com/ced4568)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/toochase-dumphord/)
+[![GitHub](https://img.shields.io/badge/GitHub-ced4568-black?style=for-the-badge&logo=github)](https://github.com/ced4568)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Live-brightgreen?style=for-the-badge)](https://chasedumphord.com)
+[![NOC](https://img.shields.io/badge/NOC-Live-cyan?style=for-the-badge)](https://noc.chasedumphord.com)
+
+📧 chasedumphord@gmail.com | 📍 Oxford, MS
 
 ---
 
-## ⚡ Final Note
-
-> This is not a static portfolio — it is a **live representation of working systems.**
+> This is not a static portfolio — it is a live representation of working systems.
