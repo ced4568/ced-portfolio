@@ -49,7 +49,7 @@ Proxmox Biggie (Cron every 5min)
 
 ### Automation
 
-- Script: `~/scripts/noc_update.py` running on Biggie (`10.10.30.192`)
+- Script: `~/scripts/noc_update.py` running on Biggie
 - Cron: `*/5 * * * *` — every 5 minutes
 - Log: `/var/log/noc_update.log`
 - Auth: GitHub Personal Access Token via baked remote URL

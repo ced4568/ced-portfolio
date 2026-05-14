@@ -16,6 +16,11 @@
   <meta property="og:description" content="Live infrastructure visibility — Proxmox, K3s, TrueNAS, APRS edge systems." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://noc.chasedumphord.com" />
+  <meta property="og:image" content="https://chasedumphord.com/assets/images/noc-dashboard.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ced's NOC | Live Systems Dashboard" />
+  <meta name="twitter:description" content="Live infrastructure visibility — Proxmox, K3s, TrueNAS, APRS edge systems." />
+  <meta name="twitter:image" content="https://chasedumphord.com/assets/images/noc-dashboard.png" />
 
   <!-- Favicons (path up one level since we're in /noc/) -->
   <link rel="icon" type="image/png" sizes="32x32"   href="../assets/favicons/favicon-32x32.png" />
@@ -193,12 +198,11 @@
 
       <nav>
         <ul class="nav-links">
-          <li><a href="https://chasedumphord.com/#snapshot">Snapshot</a></li>
-          <li><a href="https://chasedumphord.com/#about">About</a></li>
-          <li><a href="https://chasedumphord.com/#projects">Projects</a></li>
-          <li><a href="https://chasedumphord.com/#stack">Stack</a></li>
+          <li><a href="#top">Dashboard</a></li>
+          <li><a href="#layer-tabs">Systems</a></li>
+          <li><a href="https://chasedumphord.com">← Portfolio</a></li>
+          <li><a href="https://github.com/ced4568/ceds-homelab" target="_blank" rel="noopener noreferrer">GitHub</a></li>
           <li><a href="https://chasedumphord.com/#contact">Contact</a></li>
-          <li><a href="https://chasedumphord.com/assets/images/ChaseD_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
         </ul>
       </nav>
     </div>
@@ -300,7 +304,7 @@
         <!-- Stack info bar -->
         <div class="noc-stack-bar">
           <span><strong>Stack:</strong> Python health checks → JSON → JS dashboard</span>
-          <span><strong>Next:</strong> Grafana + Prometheus integration</span>
+          <span><strong>Live:</strong> <a href="https://grafana.cedshomelab.com" target="_blank" rel="noopener noreferrer">Grafana + Prometheus</a></span>
           <span><strong>Source:</strong>
             <a href="https://github.com/ced4568/ceds-homelab" target="_blank" rel="noopener noreferrer">
               github/ceds-homelab
@@ -331,7 +335,7 @@
               </p>
             </div>
             <div class="noc-card">
-              <div class="noc-card-badge future">📈 Future</div>
+              <div class="noc-card-badge done">✅ Live</div>
               <h3>Grafana + Prometheus</h3>
               <p>
                 Full observability stack for Proxmox, TrueNAS, K3s, Raspberry Pi,
@@ -362,6 +366,7 @@
     // ── Layer filter tabs ──────────────────────────────────────────
     // Populated after NOC data loads. Filters the system grid by layer.
     let allSystems = [];
+    let activeLayer = "all";  // Track active filter across refreshes
 
     const originalLoad = window.loadNocStatus;
 
@@ -372,13 +377,24 @@
         if (cards.length > 0) {
           buildLayerTabs();
           buildUptimePills();
-          observer.disconnect();
+          // Re-apply active filter after data refresh
+          reapplyFilter();
         }
       });
 
       const grid = document.getElementById("noc-system-grid");
       if (grid) observer.observe(grid, { childList: true });
     });
+
+    function reapplyFilter() {
+      if (activeLayer !== "all") {
+        document.querySelectorAll(".noc-system-card").forEach(card => {
+          const layerEl = card.querySelector(".noc-system-top span:last-child");
+          card.style.display =
+            layerEl && layerEl.textContent.trim() === activeLayer ? "" : "none";
+        });
+      }
+    }
 
     function buildLayerTabs() {
       const cards = document.querySelectorAll(".noc-system-card");
@@ -394,7 +410,7 @@
 
       layers.forEach(layer => {
         const btn = document.createElement("button");
-        btn.className = "layer-tab" + (layer === "all" ? " active" : "");
+        btn.className = "layer-tab" + (layer === activeLayer ? " active" : "");
         btn.dataset.layer = layer;
         btn.textContent = layer === "all" ? "All Systems" : layer;
         btn.addEventListener("click", () => filterByLayer(layer, btn));
@@ -403,6 +419,7 @@
     }
 
     function filterByLayer(layer, activeBtn) {
+      activeLayer = layer;  // Persist across refreshes
       document.querySelectorAll(".layer-tab").forEach(t => t.classList.remove("active"));
       activeBtn.classList.add("active");
 

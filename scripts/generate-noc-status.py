@@ -12,7 +12,7 @@ SYSTEMS = [
         "type": "Virtualization Platform",
         "host": "10.10.30.250",
         "port": 8006,
-        "address": "10.10.30.250:8006",
+        "display_name": "BigWorld",
         "layer": "Core Infrastructure",
         "label": "Hypervisor"
     },
@@ -21,7 +21,7 @@ SYSTEMS = [
         "type": "Storage Platform",
         "host": "10.10.30.143",
         "port": 80,
-        "address": "10.10.30.143",
+        "display_name": "TrueNAS",
         "layer": "Storage",
         "label": "NAS"
     },
@@ -30,7 +30,7 @@ SYSTEMS = [
         "type": "Reverse Proxy",
         "host": "10.10.30.210",
         "port": 81,
-        "address": "10.10.30.210:81",
+        "display_name": "NPM",
         "layer": "Access Layer",
         "label": "Proxy"
     },
@@ -39,7 +39,7 @@ SYSTEMS = [
         "type": "Service Dashboard",
         "host": "10.10.30.61",
         "port": 4000,
-        "address": "10.10.30.61:4000",
+        "display_name": "Dashy",
         "layer": "Dashboard",
         "label": "Portal"
     },
@@ -48,7 +48,7 @@ SYSTEMS = [
         "type": "Media Service",
         "host": "10.10.30.143",
         "port": 30013,
-        "address": "10.10.30.143:30013",
+        "display_name": "PrimeStation",
         "layer": "Application Service",
         "label": "App"
     },
@@ -57,7 +57,7 @@ SYSTEMS = [
         "type": "Kubernetes API",
         "host": "10.10.30.72",
         "port": 6443,
-        "address": "10.10.30.72:6443",
+        "display_name": "k3s-django-1",
         "layer": "Compute Cluster",
         "label": "Cluster"
     },
@@ -66,7 +66,7 @@ SYSTEMS = [
         "type": "RF Edge Gateway",
         "host": "10.10.30.129",
         "port": 8001,
-        "address": "KJ5JCO-10 / Direwolf KISS 8001",
+        "display_name": "KJ5JCO-10 iGate",
         "layer": "Edge / RF",
         "label": "iGate"
     },
@@ -75,7 +75,7 @@ SYSTEMS = [
         "type": "APRS Internet Service",
         "host": "noam.aprs2.net",
         "port": 14580,
-        "address": "noam.aprs2.net:14580",
+        "display_name": "noam.aprs2.net",
         "layer": "Edge / RF",
         "label": "External"
     }
@@ -141,7 +141,7 @@ def main():
         systems.append({
             "name": system["name"],
             "type": system["type"],
-            "address": system["address"],
+            "address": system["display_name"],
             "status": status,
             "severity": severity_from_status(online, latency),
             "layer": system["layer"],
