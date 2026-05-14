@@ -1,7 +1,7 @@
 {
   "nocName": "Ced's NOC",
   "status": "1 System(s) Degraded",
-  "lastUpdated": "2026-05-14T23:45:01Z",
+  "lastUpdated": "2026-05-14T23:50:01Z",
   "summary": {
     "nodes": "12+ Pi",
     "services": "27/28",
@@ -10,312 +10,312 @@
   },
   "systems": [
     {
-      "name": "Proxmox — BigWorld",
+      "name": "Proxmox \u2014 BigWorld",
       "type": "Proxmox VE Hypervisor",
       "layer": "Infrastructure",
       "label": "Compute",
-      "address": "BigWorld",
+      "address": "10.10.30.250",
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "Proxmox — Biggie",
+      "name": "Proxmox \u2014 Biggie",
       "type": "Proxmox VE Hypervisor",
       "layer": "Infrastructure",
       "label": "Compute",
-      "address": "Biggie",
+      "address": "10.10.30.192",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.1ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "latency": "0.0ms",
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "Proxmox — Snoop",
+      "name": "Proxmox \u2014 Snoop",
       "type": "Proxmox VE Hypervisor",
       "layer": "Infrastructure",
       "label": "Compute",
-      "address": "Snoop",
+      "address": "10.10.30.153",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.7ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "latency": "0.5ms",
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "Proxmox — TooShort",
+      "name": "Proxmox \u2014 TooShort",
       "type": "Proxmox VE Hypervisor",
       "layer": "Infrastructure",
       "label": "Compute",
-      "address": "TooShort",
+      "address": "10.10.30.120",
+      "status": "Online",
+      "severity": "Healthy",
+      "latency": "0.6ms",
+      "lastCheck": "2026-05-14 23:50 UTC"
+    },
+    {
+      "name": "Proxmox \u2014 Tupac",
+      "type": "Proxmox VE Hypervisor",
+      "layer": "Infrastructure",
+      "label": "Compute",
+      "address": "10.10.30.74",
+      "status": "Online",
+      "severity": "Healthy",
+      "latency": "0.3ms",
+      "lastCheck": "2026-05-14 23:50 UTC"
+    },
+    {
+      "name": "Proxmox \u2014 DrDre",
+      "type": "Proxmox VE Hypervisor",
+      "layer": "Infrastructure",
+      "label": "Compute",
+      "address": "10.10.30.227",
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.4ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "Proxmox — Tupac",
-      "type": "Proxmox VE Hypervisor",
-      "layer": "Infrastructure",
-      "label": "Compute",
-      "address": "Tupac",
-      "status": "Online",
-      "severity": "Healthy",
-      "latency": "0.5ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
-    },
-    {
-      "name": "Proxmox — DrDre",
-      "type": "Proxmox VE Hypervisor",
-      "layer": "Infrastructure",
-      "label": "Compute",
-      "address": "DrDre",
-      "status": "Online",
-      "severity": "Healthy",
-      "latency": "0.5ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
-    },
-    {
-      "name": "K3s Control — django-1",
+      "name": "K3s Control \u2014 django-1",
       "type": "K3s Control Plane",
       "layer": "Orchestration",
       "label": "K3s",
-      "address": "k3s-django-1",
+      "address": "10.10.30.72",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "latency": "0.2ms",
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "K3s Control — django-2",
+      "name": "K3s Control \u2014 django-2",
       "type": "K3s Control Plane",
       "layer": "Orchestration",
       "label": "K3s",
-      "address": "k3s-django-2",
+      "address": "10.10.30.245",
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "K3s Control — django-3",
+      "name": "K3s Control \u2014 django-3",
       "type": "K3s Control Plane",
       "layer": "Orchestration",
       "label": "K3s",
-      "address": "k3s-django-3",
+      "address": "10.10.30.128",
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.3ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "K3s Ingress — node-1",
+      "name": "K3s Ingress \u2014 node-1",
       "type": "K3s Worker / Ingress",
       "layer": "Orchestration",
       "label": "K3s",
-      "address": "k3s-node-1",
+      "address": "10.10.30.219",
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "K3s Ingress — node-2",
+      "name": "K3s Ingress \u2014 node-2",
       "type": "K3s Worker / Ingress",
       "layer": "Orchestration",
       "label": "K3s",
-      "address": "k3s-node-2",
+      "address": "10.10.30.134",
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.3ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "K3s Ingress — node-3",
+      "name": "K3s Ingress \u2014 node-3",
       "type": "K3s Worker / Ingress",
       "layer": "Orchestration",
       "label": "K3s",
-      "address": "k3s-node-3",
-      "status": "Online",
-      "severity": "Healthy",
-      "latency": "0.2ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
-    },
-    {
-      "name": "K3s Data — node-4",
-      "type": "K3s Worker / Data",
-      "layer": "Orchestration",
-      "label": "K3s",
-      "address": "k3s-node-4",
+      "address": "10.10.30.222",
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.3ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "K3s Data — node-5",
+      "name": "K3s Data \u2014 node-4",
       "type": "K3s Worker / Data",
       "layer": "Orchestration",
       "label": "K3s",
-      "address": "k3s-node-5",
+      "address": "10.10.30.126",
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "K3s Data — node-6",
+      "name": "K3s Data \u2014 node-5",
       "type": "K3s Worker / Data",
       "layer": "Orchestration",
       "label": "K3s",
-      "address": "k3s-node-6",
+      "address": "10.10.30.239",
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "K3s Monitor — node-7",
+      "name": "K3s Data \u2014 node-6",
+      "type": "K3s Worker / Data",
+      "layer": "Orchestration",
+      "label": "K3s",
+      "address": "10.10.30.208",
+      "status": "Online",
+      "severity": "Healthy",
+      "latency": "0.3ms",
+      "lastCheck": "2026-05-14 23:50 UTC"
+    },
+    {
+      "name": "K3s Monitor \u2014 node-7",
       "type": "K3s Worker / Monitoring",
       "layer": "Orchestration",
       "label": "K3s",
-      "address": "k3s-node-7",
+      "address": "10.10.30.198",
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "K3s Monitor — node-8",
+      "name": "K3s Monitor \u2014 node-8",
       "type": "K3s Worker / Monitoring",
       "layer": "Orchestration",
       "label": "K3s",
-      "address": "k3s-node-8",
+      "address": "10.10.30.216",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.2ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "latency": "0.4ms",
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "K3s Monitor — node-9",
+      "name": "K3s Monitor \u2014 node-9",
       "type": "K3s Worker / Monitoring",
       "layer": "Orchestration",
       "label": "K3s",
-      "address": "k3s-node-9",
+      "address": "10.10.30.29",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.2ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "latency": "0.3ms",
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
       "name": "TrueNAS",
       "type": "Network Attached Storage",
       "layer": "Infrastructure",
       "label": "Storage",
-      "address": "TrueNAS",
+      "address": "10.10.30.143",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.6ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "latency": "0.7ms",
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
       "name": "Nginx Proxy Manager",
       "type": "Reverse Proxy",
       "layer": "Networking",
       "label": "Access",
-      "address": "NPM",
+      "address": "10.10.30.210",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "latency": "0.2ms",
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
       "name": "Prometheus",
       "type": "Metrics Collection",
       "layer": "Monitoring",
       "label": "Observability",
-      "address": "Prometheus",
+      "address": "10.10.30.140",
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
       "name": "Grafana",
       "type": "Metrics Dashboard",
       "layer": "Monitoring",
       "label": "Observability",
-      "address": "Grafana",
+      "address": "10.10.30.68",
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
       "name": "Uptime Kuma",
       "type": "Service Monitor",
       "layer": "Monitoring",
       "label": "Observability",
-      "address": "Uptime Kuma",
+      "address": "10.10.30.14",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "latency": "0.2ms",
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
       "name": "Dashy",
       "type": "HomeLab Dashboard",
       "layer": "Services",
       "label": "Dashboard",
-      "address": "Dashy",
+      "address": "10.10.30.61",
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
       "name": "Home Assistant",
       "type": "Home Automation",
       "layer": "Services",
       "label": "Automation",
-      "address": "Home Assistant",
+      "address": "10.10.30.104",
       "status": "Offline",
       "severity": "Critical",
       "latency": "N/A",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
       "name": "PrimeStation",
       "type": "Media / Game Server",
       "layer": "Services",
       "label": "Media",
-      "address": "PrimeStation",
+      "address": "10.10.30.233",
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.4ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "APRS iGate — Home",
+      "name": "APRS iGate \u2014 Home",
       "type": "RF Edge / APRS-IS Gateway",
       "layer": "Edge",
       "label": "RF",
-      "address": "KJ5JCO-10 iGate",
+      "address": "10.10.30.129",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "160.8ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "latency": "5.2ms",
+      "lastCheck": "2026-05-14 23:50 UTC"
     },
     {
-      "name": "APRS iGate — Mobile",
+      "name": "APRS iGate \u2014 Mobile",
       "type": "RF Edge / Mobile Node",
       "layer": "Edge",
       "label": "RF",
-      "address": "KJ5JCO Mobile",
+      "address": "10.10.30.35",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "21.2ms",
-      "lastCheck": "2026-05-14 23:45 UTC"
+      "latency": "71.1ms",
+      "lastCheck": "2026-05-14 23:50 UTC"
     }
   ]
 }
