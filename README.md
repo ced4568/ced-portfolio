@@ -16,8 +16,8 @@ Digital Systems Engineer with 10+ years of experience across industrial automati
 
 | Site | URL | Description |
 |------|-----|-------------|
-| Portfolio | https://chasedumphord.com | Personal portfolio — projects, stack, resume |
-| NOC Dashboard | https://noc.chasedumphord.com | Live infrastructure visibility — 28 systems |
+| Portfolio | https://chasedumphord.com | Personal portfolio projects, stack, resume |
+| NOC Dashboard | https://noc.chasedumphord.com | Live infrastructure visibility 28 systems |
 
 ---
 
