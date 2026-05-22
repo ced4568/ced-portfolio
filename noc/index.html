@@ -8,18 +8,18 @@
 
   <meta
     name="description"
-    content="Ced's NOC — live network operations center dashboard showing real-time infrastructure health, service status, and edge system monitoring."
+    content="Ced's NOC — live network operations center dashboard showing real-time infrastructure health across 18 nodes and 28 services. Proxmox, K3s, TrueNAS, APRS edge systems."
   />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Ced's NOC | Live Systems Dashboard" />
-  <meta property="og:description" content="Live infrastructure visibility — Proxmox, K3s, TrueNAS, APRS edge systems." />
+  <meta property="og:description" content="Live infrastructure visibility — 18 nodes, 28 services. Proxmox, K3s, TrueNAS, APRS edge systems. Always running." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://noc.chasedumphord.com" />
   <meta property="og:image" content="https://chasedumphord.com/assets/images/noc-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Ced's NOC | Live Systems Dashboard" />
-  <meta name="twitter:description" content="Live infrastructure visibility — Proxmox, K3s, TrueNAS, APRS edge systems." />
+  <meta name="twitter:description" content="Live infrastructure visibility — 18 nodes, 28 services. Proxmox, K3s, TrueNAS, APRS edge systems. Always running." />
   <meta name="twitter:image" content="https://chasedumphord.com/assets/images/noc-dashboard.png" />
 
   <!-- Favicons (path up one level since we're in /noc/) -->
@@ -223,9 +223,9 @@
         </h1>
 
         <p class="noc-page-lead">
-          Real-time visibility into Ced's HomeLab infrastructure Proxmox, K3s,
-          TrueNAS, APRS RF edge systems, and self-hosted services.
-          Not simulated. Not a demo. Running hardware.
+          Real time visibility into Ced's HomeLab infrastructure across 18 nodes and 28 services 
+          Proxmox, K3s, TrueNAS, APRS RF edge systems, and self-hosted services.
+          Built from the ground up and running in production every day. The infrastructure on this page is live. Not a demo.
         </p>
 
         <ul class="noc-page-meta">
@@ -296,7 +296,7 @@
         <!-- Fallback -->
         <div id="noc-fallback" class="noc-fallback" style="display:none;">
           <p class="noc-fallback-msg">
-            📡 NOC feed unavailable from this context systems run locally.<br/>
+               NOC feed unavailable from this context systems run locally.<br/>
             Data updates when the local pipeline pushes a fresh noc-status.json.
           </p>
         </div>
@@ -323,23 +323,23 @@
               <h3>Portfolio NOC</h3>
               <p>
                 JSON-driven dashboard showing real inventory, online/offline checks,
-                service labels, latency, and last-check timestamps.
+                service labels, latency, and last check timestamps across 18 nodes and 28 services.
               </p>
             </div>
             <div class="noc-card">
-              <div class="noc-card-badge next">⚙️ Next</div>
+              <div class="noc-card-badge done">✅ Live</div>
               <h3>Automated Data Updates</h3>
               <p>
-                Scheduled scripts auto-refresh system status and push dashboard-ready
-                JSON on a cron interval — no manual updates.
+                Cron-driven scripts running on Biggie auto-refresh system status every 5 minutes
+                and push dashboard ready JSON to GitHub Pages with no manual updates required.
               </p>
             </div>
             <div class="noc-card">
               <div class="noc-card-badge done">✅ Live</div>
               <h3>Grafana + Prometheus</h3>
               <p>
-                Full observability stack for Proxmox, TrueNAS, K3s, Raspberry Pi,
-                Uptime Kuma, and APRS edge systems with real-time metrics.
+                Full observability stack running across Proxmox, TrueNAS, K3s nodes, Uptime Kuma,
+                and APRS edge systems with real time metrics ingestion and live alerting pipelines.
               </p>
             </div>
           </div>
@@ -364,20 +364,15 @@
   <!-- NOC page extras — layer filter tabs + uptime pills -->
   <script>
     // ── Layer filter tabs ──────────────────────────────────────────
-    // Populated after NOC data loads. Filters the system grid by layer.
     let allSystems = [];
-    let activeLayer = "all";  // Track active filter across refreshes
-
-    const originalLoad = window.loadNocStatus;
+    let activeLayer = "all";
 
     document.addEventListener("DOMContentLoaded", () => {
-      // Hook into data after the shared script loads it
       const observer = new MutationObserver(() => {
         const cards = document.querySelectorAll(".noc-system-card");
         if (cards.length > 0) {
           buildLayerTabs();
           buildUptimePills();
-          // Re-apply active filter after data refresh
           reapplyFilter();
         }
       });
@@ -419,7 +414,7 @@
     }
 
     function filterByLayer(layer, activeBtn) {
-      activeLayer = layer;  // Persist across refreshes
+      activeLayer = layer;
       document.querySelectorAll(".layer-tab").forEach(t => t.classList.remove("active"));
       activeBtn.classList.add("active");
 
