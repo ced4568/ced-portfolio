@@ -95,7 +95,6 @@ async function loadNocStatus() {
           </div>
           <h3>${system.name}</h3>
           <p>${system.type}</p>
-          <code>${system.address}</code>
           <div class="system-meta">
             <small>Status: ${system.status}</small>
             <small>Latency: ${system.latency || "N/A"}</small>
@@ -236,6 +235,7 @@ async function loadGithubRepos() {
     }
   }
 }
+
 // Build the alert panel from system data
 function renderAlerts(systems, alertList) {
   const scored = systems
