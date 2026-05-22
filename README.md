@@ -113,7 +113,7 @@ Dual node RF to internet gateway. Raspberry Pi + Direwolf TNC. Live on aprs.fi.
 
 **Development:** Python • Bash • JavaScript • HTML/CSS • Git
 
-**AI & Automation:** n8n • OpenRouter • Telegram Bots • Claude (Anthropic) • Gemini • Hermes Agent • LLM-assisted Documentation • AI-driven Diagnostics
+**AI & Automation:** n8n • OpenRouter • Telegram Bots • ChatGPT • Claude (Anthropic) •Crew AI Agent • Gemini • Hermes Agent • LLM-assisted Documentation • AI-driven Diagnostics
 
 ---
 
