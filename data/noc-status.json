@@ -1,7 +1,7 @@
 {
   "nocName": "Ced's NOC",
   "status": "1 System(s) Degraded",
-  "lastUpdated": "2026-05-23T00:25:01Z",
+  "lastUpdated": "2026-05-23T00:30:01Z",
   "summary": {
     "nodes": "12+ Pi",
     "services": "27/28",
@@ -17,8 +17,8 @@
       "address": "10.10.30.250",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.2ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "Proxmox \u2014 Biggie",
@@ -29,7 +29,7 @@
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.1ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "Proxmox \u2014 Snoop",
@@ -39,8 +39,8 @@
       "address": "10.10.30.153",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.7ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.5ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "Proxmox \u2014 TooShort",
@@ -50,8 +50,8 @@
       "address": "10.10.30.120",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.6ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.5ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "Proxmox \u2014 Tupac",
@@ -62,7 +62,7 @@
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.7ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "Proxmox \u2014 DrDre",
@@ -73,7 +73,7 @@
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.7ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "K3s Control \u2014 django-1",
@@ -83,8 +83,8 @@
       "address": "10.10.30.72",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.2ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "K3s Control \u2014 django-2",
@@ -94,8 +94,8 @@
       "address": "10.10.30.245",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.2ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "K3s Control \u2014 django-3",
@@ -105,8 +105,8 @@
       "address": "10.10.30.128",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.2ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "K3s Ingress \u2014 node-1",
@@ -116,8 +116,8 @@
       "address": "10.10.30.219",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.2ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "K3s Ingress \u2014 node-2",
@@ -128,7 +128,7 @@
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "K3s Ingress \u2014 node-3",
@@ -139,7 +139,7 @@
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "K3s Data \u2014 node-4",
@@ -150,7 +150,7 @@
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.3ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "K3s Data \u2014 node-5",
@@ -160,8 +160,8 @@
       "address": "10.10.30.239",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.4ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "K3s Data \u2014 node-6",
@@ -171,8 +171,8 @@
       "address": "10.10.30.208",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.4ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.2ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "K3s Monitor \u2014 node-7",
@@ -182,8 +182,8 @@
       "address": "10.10.30.198",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.4ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "K3s Monitor \u2014 node-8",
@@ -193,8 +193,8 @@
       "address": "10.10.30.216",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.2ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "K3s Monitor \u2014 node-9",
@@ -204,8 +204,8 @@
       "address": "10.10.30.29",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.3ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.2ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "TrueNAS",
@@ -215,8 +215,8 @@
       "address": "10.10.30.143",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.6ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.5ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "Nginx Proxy Manager",
@@ -227,7 +227,7 @@
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "Prometheus",
@@ -237,8 +237,8 @@
       "address": "10.10.30.140",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.2ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.3ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "Grafana",
@@ -249,7 +249,7 @@
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "Uptime Kuma",
@@ -260,7 +260,7 @@
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "Dashy",
@@ -271,7 +271,7 @@
       "status": "Online",
       "severity": "Healthy",
       "latency": "0.2ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "Home Assistant",
@@ -282,7 +282,7 @@
       "status": "Offline",
       "severity": "Critical",
       "latency": "N/A",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "PrimeStation",
@@ -292,8 +292,8 @@
       "address": "10.10.30.233",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "0.6ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "0.5ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "APRS iGate \u2014 Home",
@@ -303,8 +303,8 @@
       "address": "10.10.30.129",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "16.3ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "67.5ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     },
     {
       "name": "APRS iGate \u2014 Mobile",
@@ -314,8 +314,8 @@
       "address": "10.10.30.35",
       "status": "Online",
       "severity": "Healthy",
-      "latency": "2.7ms",
-      "lastCheck": "2026-05-23 00:25 UTC"
+      "latency": "3.4ms",
+      "lastCheck": "2026-05-23 00:30 UTC"
     }
   ]
 }
