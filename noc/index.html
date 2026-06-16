@@ -1,3 +1,22 @@
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  Ced's NOC — Live Infrastructure Dashboard                           ║
+  ║  FILE: noc/index.html                                                ║
+  ╠══════════════════════════════════════════════════════════════════════╣
+  ║  PAGE MAP (top → bottom)                                             ║
+  ║  1. HEAD      — meta, OG/Twitter tags, favicons, Google Fonts,       ║
+  ║                 shared stylesheet (../style.css), NOC-specific CSS   ║
+  ║  2. NAV       — site header: Ced_ logo, nav links, portfolio link    ║
+  ║  3. NOC HERO  — eyebrow (live/auto-refresh badge), H1, lead text,    ║
+  ║                 meta bar (location, portfolio link, GitHub)           ║
+  ║  4. DASHBOARD — status command bar, uptime pills (JS), metrics grid, ║
+  ║                 alert panel, layer filter tabs, system cards grid,    ║
+  ║                 stack info bar, NOC roadmap cards                     ║
+  ║  5. FOOTER    — copyright + back-to-top link                         ║
+  ║  6. SCRIPTS   — ../script.js + inline NOC JS (layer tabs,            ║
+  ║                 uptime pill builder, MutationObserver for card grid)  ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -191,7 +210,12 @@
 
 <body>
 
-  <!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════════════════════════════ NAV
+       Shared site-header component (styled by ../style.css).
+       Left: "Ced_" logo linking back to chasedumphord.com.
+       Right: nav links — Dashboard (top anchor), Systems (layer-tabs anchor),
+              ← Portfolio (main site), GitHub (ced4568), Contact.
+  ══════════════════════════════════════════════════════════════════════════ -->
   <header class="site-header">
     <div class="container nav">
       <a href="https://chasedumphord.com" class="logo">Ced<span class="logo-cursor">_</span></a>
@@ -210,7 +234,12 @@
 
   <main id="top">
 
-    <!-- ═══════════════════════════════ NOC HERO ═══════════════════════════════ -->
+    <!-- ══════════════════════════════════════════════════════════════════════ NOC HERO
+         Eyebrow tag: "Ced's NOC • Live Infrastructure Dashboard • Auto-refresh: 30s".
+         H1: "Live Systems Dashboard" with accent color on "Dashboard".
+         Lead text: describes 18 nodes, 28 services, Proxmox/K3s/TrueNAS/APRS stack.
+         Meta bar: location (Oxford MS), portfolio link, GitHub profile link.
+    ══════════════════════════════════════════════════════════════════════════ -->
     <div class="noc-page-hero">
       <div class="container">
         <p class="eyebrow">
@@ -236,7 +265,19 @@
       </div>
     </div>
 
-    <!-- ═══════════════════════════════ NOC DASHBOARD ═══════════════════════════════ -->
+    <!-- ══════════════════════════════════════════════════════════════════════ NOC DASHBOARD
+         Full-width live dashboard area. All dynamic content driven by ../script.js
+         pulling noc-status.json. Sub-sections inside:
+           • Status command bar — live connection status dot + refresh badge (JS)
+           • Uptime pills bar   — online/degraded/offline counts built by buildUptimePills()
+           • Metrics grid       — 4 counters: Nodes, Services Online, Network Segments, Edge Systems
+           • Alert panel        — top 3 priority systems, fed from JSON data feed
+           • Layer filter tabs  — filter cards by stack layer (Compute, Storage, Network, etc.)
+           • System cards grid  — one card per host/service, populated by JS from JSON
+           • Fallback message   — shown if JSON feed is unavailable
+           • Stack info bar     — tech stack credits: Python → JSON → JS, Grafana link, GitHub repo
+           • NOC Roadmap        — 3 build-stage cards (Portfolio NOC, Auto Updates, Grafana — all ✅ Live)
+    ══════════════════════════════════════════════════════════════════════════ -->
     <div class="noc-full">
       <div class="container">
 
@@ -350,7 +391,9 @@
 
   </main>
 
-  <!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════════════════════════════ FOOTER
+       Minimal single-row footer: copyright (year injected by data-year JS) + back-to-top link.
+  ══════════════════════════════════════════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="container footer-content">
       <p>© <span data-year></span> Chase Dumphord — <span class="footer-mono">noc.chasedumphord.com</span></p>
@@ -358,6 +401,12 @@
     </div>
   </footer>
 
+  <!-- ══════════════════════════════════════════════════════════════════════ SCRIPTS
+       1. ../script.js — shared portfolio script (NOC JSON fetch, card rendering, year injection).
+       2. Inline NOC JS — layer filter tabs (buildLayerTabs, filterByLayer) and
+          uptime pill builder (buildUptimePills). Uses MutationObserver on the system grid
+          to rebuild tabs/pills whenever the JS card renderer populates the DOM.
+  ══════════════════════════════════════════════════════════════════════════ -->
   <!-- Shared script (up one level) -->
   <script src="../script.js"></script>
 
