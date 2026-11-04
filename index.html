@@ -17,12 +17,12 @@
 
   <meta
     name="description"
-    content="Chase Dumphord DevOps and Cloud Infrastructure Engineer running an 18 node production environment with K3s, Proxmox, Prometheus, Grafana, and APRS RF edge systems out of Oxford, MS."
+    content="Chase Dumphord DevOps and Cloud Infrastructure Engineer running a 19 node environment with K3s, Proxmox, Prometheus, Grafana, and APRS RF edge systems out of Oxford, MS."
   />
 
   <!-- Open Graph for LinkedIn / Discord sharing -->
   <meta property="og:title" content="Chase Dumphord | DevOps &amp; Cloud Infrastructure Engineer" />
-  <meta property="og:description" content="DevOps &amp; Cloud Infrastructure Engineer. 18 nodes. 28 services. Always running. Based in Oxford, MS." />
+  <meta property="og:description" content="DevOps &amp; Cloud Infrastructure Engineer. 19 nodes. 28 services. Always running. Based in Oxford, MS." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://chasedumphord.com" />
 
@@ -93,7 +93,7 @@
           <h1>I build systems that <span class="accent-word">connect</span> hardware, networks, and operations.</h1>
 
           <p class="lead">
-            Chase Dumphord DevOps and Cloud Infrastructure Engineer running an 18 node production environment out of Oxford, MS. 6 node Proxmox VE cluster, 12 node K3s Kubernetes cluster, full observability stack, and VLAN-segmented networking. I build things that actually run, then document how they work.
+            Chase Dumphord DevOps and Cloud Infrastructure Engineer running a 19 node environment out of Oxford, MS. 7 node Proxmox VE cluster (including a dedicated SOC node), 12 node K3s Kubernetes cluster, full observability stack, and VLAN-segmented networking. I build things that actually run, then document how they work.
           </p>
 
           <div class="hero-actions">
@@ -163,7 +163,7 @@
 <span class="t-val">devops_engineer</span>
 
 <span class="t-prompt">ced's@homelab:~$</span> uptime
-<span class="t-val">18 nodes • 28 services • always_on</span>
+<span class="t-val">19 nodes • 28 services • always_on</span>
 
 <span class="t-prompt">ced's@homelab:~$</span> cat focus.txt
 <span class="t-val">kubernetes
@@ -293,13 +293,13 @@ cloud_infrastructure</span>
             <p>
               I'm a DevOps and Cloud Infrastructure Engineer focused on reliable delivery, container
               orchestration, and cloud native infrastructure built for production conditions. I run an
-              18 node environment every day consisting of a 6 node Proxmox VE hypervisor cluster and
+              19 node environment every day consisting of a 7 node Proxmox VE hypervisor cluster (including a dedicated SOC node) and
               a 12 node K3s Kubernetes cluster with Prometheus monitoring, Grafana dashboards, and
-              VLAN segmented networking. Not a lab. A production system.
+              VLAN segmented networking. I run my lab with production habits.
             </p>
             <p>
-              I come from 10+ years in industrial digital systems at GE Aerospace and in the field
-              as a Level III engineer on aerospace inspection equipment. I understand what production
+              I come from 10+ years across industrial systems and field service, including Level III
+              field work on aerospace inspection equipment, and now digital systems at GE Aerospace. I understand what production
               failure actually costs. That same operational discipline is what I bring to cloud native
               infrastructure. I don't simulate environments. I run them.
             </p>
@@ -310,7 +310,7 @@ cloud_infrastructure</span>
             <ul class="clean-list">
               <li>Kubernetes orchestration and container infrastructure</li>
               <li>DevOps automation and CI/CD pipeline workflows</li>
-              <li>Observability with Prometheus, Grafana, and alerting pipelines</li>
+              <li>Observability with Prometheus and Grafana, plus uptime alerting to Telegram</li>
               <li>Cloud native infrastructure design and deployment</li>
               <li>Networking, VLANs, reverse proxy, and Cloudflare edge configuration</li>
               <li>AI assisted automation, documentation, and diagnostic workflows</li>
@@ -343,7 +343,7 @@ cloud_infrastructure</span>
             <ul class="clean-list">
               <li>Proxmox VE virtualization platform</li>
               <li>VLAN segmentation via UniFi (Main / IoT / HomeLab / Guest)</li>
-              <li>Self hosted services behind Nginx Proxy Manager + Cloudflare Tunnels</li>
+              <li>Self hosted services behind Caddy reverse proxy + Cloudflare</li>
               <li>Uptime Kuma + Grafana monitoring stack</li>
             </ul>
             <a href="https://github.com/ced4568/ceds-homelab" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -411,7 +411,7 @@ cloud_infrastructure</span>
             <h3>Portfolio NOC</h3>
             <p>
               JSON driven dashboard showing real inventory, online/offline checks, service labels,
-              latency, and last check timestamps across 18 nodes and 28 services.
+              latency, and last check timestamps across 19 nodes and 28 services.
             </p>
           </div>
           <div class="noc-card">
@@ -419,7 +419,7 @@ cloud_infrastructure</span>
             <h3>Grafana + Prometheus Observability Stack</h3>
             <p>
               Full observability stack running across Proxmox, TrueNAS, K3s nodes, Uptime Kuma,
-              and APRS edge systems with real time metrics ingestion and live alerting pipelines.
+              and APRS edge systems with real time metrics ingestion and uptime alerting to Telegram.
             </p>
           </div>
           <div class="noc-card">
@@ -465,9 +465,10 @@ cloud_infrastructure</span>
               <span class="stack-pill">Docker</span>
               <span class="stack-pill">TrueNAS</span>
               <span class="stack-pill">Helm</span>
+              <span class="stack-pill">Argo CD</span>
               <span class="stack-pill">Terraform</span>
-              <span class="stack-pill">Nginx Proxy Manager</span>
-              <span class="stack-pill">Cloudflare Tunnels</span>
+              <span class="stack-pill">Caddy</span>
+              <span class="stack-pill">Cloudflare</span>
             </div>
           </div>
 
@@ -557,9 +558,9 @@ cloud_infrastructure</span>
           <div class="card resume-card">
             <h3>What I Bring</h3>
             <ul class="clean-list">
-              <li>Production Kubernetes infrastructure running 18 nodes across dedicated control plane, ingress, data, and monitoring node pools with live observability</li>
-              <li>10+ years of systems ownership in industrial environments where failure has direct production consequences including GE Aerospace digital systems and Level III field service on aerospace equipment</li>
-              <li>End to end cloud native infrastructure capability covering containers, ingress, secrets, monitoring, backups, and automated recovery with live systems to prove it</li>
+              <li>A 12 node K3s Kubernetes cluster with dedicated control plane, ingress, data, and monitoring node pools with live observability</li>
+              <li>10+ years across industrial systems and field service where failure has direct production consequences, including Level III field service on aerospace equipment and now digital systems at GE Aerospace</li>
+              <li>End to end cloud native infrastructure capability covering containers, ingress, secrets, monitoring, and backups with tested restores, with live systems to prove it</li>
               <li>Infrastructure-as-documentation mindset where everything built gets written up with runbooks, architecture decisions, and SOPs</li>
             </ul>
           </div>
@@ -576,7 +577,7 @@ cloud_infrastructure</span>
 
             <div class="resume-note">
               <p>
-                Open to remote and hybrid roles where real infrastructure ownership and operational depth matter. I come from industrial systems and I bring that same zero downtime discipline to cloud native environments.
+                Open to remote and hybrid roles where real infrastructure ownership and operational depth matter. I come from industrial systems and I bring that same operational discipline to cloud native environments.
               </p>
             </div>
           </div>
@@ -586,7 +587,7 @@ cloud_infrastructure</span>
             <div class="learning-grid">
               <div class="learning-item">
                 <span class="learning-icon">☸️</span>
-                <span>Advanced Kubernetes patterns including GitOps with FluxCD, Helm chart authoring, and ArgoCD</span>
+                <span>Advanced Kubernetes patterns including Helm chart authoring and progressive delivery with Argo Rollouts</span>
               </div>
               <div class="learning-item">
                 <span class="learning-icon">🏗️</span>
